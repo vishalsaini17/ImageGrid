@@ -1,0 +1,141 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+img {
+  background-image: url('../img/placeholder-200x200.png');
+  background-size: contain;
+  background-position: center;
+  background-color: #63696c;
+  background-repeat: no-repeat;
+}
+
+i.delete {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+i.delete::after,
+i.delete::before {
+  content: '';
+  background-color: #da4c4c;
+  display: block;
+  position: relative;
+}
+
+i.delete::before {
+  height: 1em;
+  width: 0.7em;
+  border-bottom-left-radius: 3px;
+  border-bottom-right-radius: 3px;
+  margin-left: 3.5px;
+  margin-right: 3.5px;
+}
+
+i.delete::after {
+  position: absolute;
+  border-radius: 3px;
+  height: 5px;
+  top: 3px;
+  right: 0;
+  left: 0;
+}
+
+.animate-image{
+  transition: all 0.8s ease;
+}
+
+.image-wrapper {
+  position: relative;
+  height: 200px;
+  width: 200px;
+  perspective: 1000px;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 30px;
+}
+
+.image-wrapper img {
+  display: block;
+  margin: auto;
+  height: 100%;
+}
+
+.image-wrapper .overlay {
+  background-color: rgb(34 34 34 / 80%);
+  color: #fff;
+  transform: rotateY(180deg);
+  padding: 30px;
+  height: 100%;
+}
+
+.image-wrapper img,
+.image-wrapper .overlay,
+.image-wrapper .img-action,
+.image-wrapper .img-action {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  transform-style: preserve-3d;
+  transition: transform 0.8s;
+}
+
+.image-wrapper img{
+  -webkit-backface-visibility: visible;
+  backface-visibility: visible;
+}
+
+.image-wrapper:hover img {
+  transform: rotateY(180deg)
+}
+
+.image-wrapper:hover .overlay,
+.image-wrapper:hover .img-action {
+  transform: rotateY(360deg)
+}
+
+.img-action {
+  transform: rotateY(180deg);
+}
+
+.img-action {
+  z-index: 1;
+  text-align: right;
+  padding: 4px 10px;
+  pointer-events: none;
+}
+
+.img-action>* {
+  pointer-events: all;
+}
+
+.image-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: auto;
+}
+
+.image-grid>.img-column {
+  transition: transform 0.3s;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.deleting {
+  transform: scale(0);
+}
+
+@media(min-width: 1380px) {
+  .image-grid {
+    max-width: 1380px;
+  }
+}
